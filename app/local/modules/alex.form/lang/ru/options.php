@@ -7,3 +7,4 @@ $MESS['ALEX_FORM_MODULE_NOT_INSTALLED'] = 'Модуль "Формы" не уст
 $MESS['ALEX_FORM_WEBHOOK_NOT_CONFIGURED'] = 'Не настроен Webhook Bitrix24';
 $MESS['ALEX_FORM_LEAD_CREATION_ERROR'] = 'Ошибка при создании лида';
 $MESS['ALEX_FORM_B24_CONNECTION_ERROR'] = 'Ошибка соединения с Bitrix24';
+$MESS['ALEX_FORM_INCORRECT_FORM_USING'] = 'Используется форма с другим ID';

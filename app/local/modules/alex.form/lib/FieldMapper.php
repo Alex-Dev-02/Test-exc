@@ -4,11 +4,14 @@ namespace alex\form\lib;
 
 class FieldMapper
 {
+    private array $mapping;
+
     /**
      * @param array $mapping
      */
-    public function __construct(private readonly array $mapping)
+    public function __construct(array $mapping)
     {
+        $this->mapping = $mapping;
     }
 
     /**

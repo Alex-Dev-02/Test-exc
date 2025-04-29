@@ -26,13 +26,14 @@ class FormHandler
     {
         try {
             $targetFormId = (int)Option::get('alex.form', 'TARGET_FORM_ID');
+
             if ($formId !== $targetFormId) {
-                var_dump('lox');
-                return;
+                throw new \Exception(Loc::getMessage('ALEX_FORM_INCORRECT_FORM_USING'));
             }
 
             $formData = self::getFormData($resultId);
-            $fieldMapper = new FieldMapper(self::getFieldMapping());
+            $formDataKeys = array_keys($formData);
+            $fieldMapper = new FieldMapper(self::getFieldMapping($formDataKeys));
             $leadData = $fieldMapper->mapToLeadData($formData);
 
             $b24Service = new B24Service();
@@ -51,13 +52,13 @@ class FormHandler
      *
      * @return string[]
      */
-    private static function getFieldMapping(): array
+    private static function getFieldMapping(array $formDataKeys): array
     {
         return [
-            'NAME' => 'SIMPLE_QUESTION_340',
-            'PHONE' => 'SIMPLE_QUESTION_997',
-            'EMAIL' => 'SIMPLE_QUESTION_896',
-            'COMMENTS' => 'SIMPLE_QUESTION_102'
+            'NAME' => $formDataKeys[0],
+            'PHONE' => $formDataKeys[1],
+            'EMAIL' => $formDataKeys[2],
+            'COMMENTS' => $formDataKeys[3]
         ];
     }
 
